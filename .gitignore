@@ -1,20 +1,5 @@
-# Created by https://www.toptal.com/developers/gitignore/api/xcode,swift,swiftpackagemanager,macos,git,swiftpm
-# Edit at https://www.toptal.com/developers/gitignore?templates=xcode,swift,swiftpackagemanager,macos,git,swiftpm
-
-### Git ###
-# Created by git for backups. To disable backups in Git:
-# $ git config --global mergetool.keepBackup false
-*.orig
-
-# Created by git when using merge tools for conflicts
-*.BACKUP.*
-*.BASE.*
-*.LOCAL.*
-*.REMOTE.*
-*_BACKUP_*.txt
-*_BASE_*.txt
-*_LOCAL_*.txt
-*_REMOTE_*.txt
+# Created by https://www.toptal.com/developers/gitignore/api/macos,swift,xcode
+# Edit at https://www.toptal.com/developers/gitignore?templates=macos,swift,xcode
 
 ### macOS ###
 # General
@@ -133,15 +118,6 @@ fastlane/test_output
 
 iOSInjectionProject/
 
-### SwiftPackageManager ###
-Packages
-xcuserdata
-*.xcodeproj
-
-
-### SwiftPM ###
-
-
 ### Xcode ###
 
 ## Xcode 8 and earlier
@@ -155,4 +131,4 @@ xcuserdata
 /*.gcno
 **/xcshareddata/WorkspaceSettings.xcsettings
 
-# End of https://www.toptal.com/developers/gitignore/api/xcode,swift,swiftpackagemanager,macos,git,swiftpm
+# End of https://www.toptal.com/developers/gitignore/api/macos,swift,xcode
