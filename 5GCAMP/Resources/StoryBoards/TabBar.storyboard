@@ -51,7 +51,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="BEu-Zj-rq8">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="DpS-Ad-Uvs" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="DpS-Ad-Uvs" customClass="TabBarController" customModule="_GCAMP" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="wXg-pU-wYI">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>

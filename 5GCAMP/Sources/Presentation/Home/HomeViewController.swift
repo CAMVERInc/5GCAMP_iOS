@@ -11,7 +11,7 @@ import WebKit
 class HomeViewController: UIViewController {
     
     @IBOutlet weak var webView: WKWebView!
-    
+
     let urlManager = URLManager()
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,10 +35,12 @@ class HomeViewController: UIViewController {
             print("URL 로딩 실패")
         }
     }
-    
-    private func reloadWebView() {
-        webView.reload()
-        print("웹리로드")
-    }
+
 }
 
+extension HomeViewController: TabBarProtocol {
+    func reloadView() {
+        loadWebView()
+        print("리로드됨.")
+    }
+}
