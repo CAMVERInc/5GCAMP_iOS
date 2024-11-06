@@ -12,19 +12,38 @@
         <!--Home-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController title="Home" id="Y6W-OH-hqX" customClass="HomeViewController" customModule="_GCAMP" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Y6W-OH-hqX" customClass="HomeViewController" customModule="_GCAMP" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hes-sp-yEv">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="769"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Hes-sp-yEv" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="Iqq-Xa-ePc"/>
+                            <constraint firstItem="Hes-sp-yEv" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="fce-ab-15S"/>
+                            <constraint firstItem="Hes-sp-yEv" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="kf7-u8-npl"/>
+                            <constraint firstItem="Hes-sp-yEv" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="wNf-cR-uSj"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" image="house.fill" catalog="system" id="IiD-SX-5Hu"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="webView" destination="Hes-sp-yEv" id="6V9-xO-x1K"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="65" y="-23"/>
+            <point key="canvasLocation" x="-674.04580152671758" y="-56.338028169014088"/>
         </scene>
     </scenes>
     <resources>
