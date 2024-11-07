@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TabBarController: UITabBarController, UITabBarControllerDelegate {
+final class TabBarController: UITabBarController, UITabBarControllerDelegate {
     
     // 이전 선택된 탭의 인덱스
     var previousSelectedIndex: Int = 0
