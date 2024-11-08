@@ -18,6 +18,10 @@ final class HomeViewModel {
         self.urlManager = urlManager
     }
     
+    func loadMainURL() -> String{
+        return urlManager.getMainDomain()
+    }
+    
     func loadWebView() {
         isLoading.value = true
         if let request = urlManager.mainURLRequest() {
@@ -29,4 +33,5 @@ final class HomeViewModel {
             isLoading.value = false
         }
     }
+    
 }

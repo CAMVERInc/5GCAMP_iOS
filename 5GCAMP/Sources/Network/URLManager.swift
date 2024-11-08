@@ -8,8 +8,14 @@
 import Foundation
 
 struct URLManager {
+    private let mainDomain: String = "www.5gcamp.com"
+        
+    func getMainDomain() -> String {
+        return mainDomain
+    }
+    
     func mainURLRequest() -> URLRequest? {
-        let baseURL = "https://www.5gcamp.com/"
+        let baseURL = "https://" + getMainDomain()
         guard let url = URL(string: baseURL) else {
             print("잘못된 주소")
             return nil
@@ -17,3 +23,4 @@ struct URLManager {
         return URLRequest(url: url)
     }
 }
+
