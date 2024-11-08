@@ -10,7 +10,6 @@ import WebKit
 import SafariServices
 
 final class HomeViewController: UIViewController {
-    
     @IBOutlet weak var webView: WKWebView!
     
     private let homeViewModel = HomeViewModel()
@@ -71,29 +70,40 @@ extension HomeViewController: WKUIDelegate {
 
 extension HomeViewController: WKNavigationDelegate {
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-        print("Navigating to: \(navigationAction.request.url?.absoluteString ?? "unknown")")
-        if let url = navigationAction.request.url, let scheme = url.scheme {
-            print("Scheme: \(scheme)")
-            if scheme == "tel" { // 이동 링크가 전화인 경우
-                UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                decisionHandler(.cancel)
-                print("Opening tel URL externally")
-            } else if scheme == "http" || scheme == "https" { // 이동 링크가 외부 링크인 경우 사파리 연결
-                if let host = url.host, host.contains(homeViewModel.loadMainURL()) {
-                    decisionHandler(.allow)
-                    print("Allowing navigation for internal domain")
-                } else {
-                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                    decisionHandler(.cancel)
-                    print("Opening http/https URL externally")
-                }
-            } else {
-                decisionHandler(.allow)
-                print("Allowing navigation for other schemes")
-            }
-        } else {
-            decisionHandler(.allow)
+        guard let url = navigationAction.request.url, let scheme = url.scheme else {
             print("Allowing navigation (no URL or scheme)")
+            decisionHandler(.allow)
+            return
+        }
+        
+        print("Navigating to: \(url.absoluteString)")
+        print("Scheme: \(scheme)")
+        
+        switch scheme {
+        case "tel":
+            handleTelURL(url: url)
+            decisionHandler(.cancel)
+        case "http", "https":
+            handleWebURL(url: url, decisionHandler: decisionHandler)
+        default:
+            print("Allowing navigation for other schemes")
+            decisionHandler(.allow)
+        }
+    }
+    
+    private func handleTelURL(url: URL) {
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        print("Opening tel URL externally")
+    }
+    
+    private func handleWebURL(url: URL, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        if url.host?.contains(homeViewModel.loadMainURL()) == true {
+            print("Allowing navigation for internal domain")
+            decisionHandler(.allow)
+        } else {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            print("Opening http/https URL externally")
+            decisionHandler(.cancel)
         }
     }
 }
